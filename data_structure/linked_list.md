@@ -83,6 +83,7 @@ public ListNode deleteDuplicates(ListNode head) {
 > 反转一个单链表。
 
 思路：用一个 prev 节点保存向前指针，temp 保存向后的临时指针
+//如果不保存 前向,后向指针,那在头插法使用过程中,未免破坏原链条,需要new ListNode复制节点,内存开销大.不破坏原链条,是本题的难点
 
 ```java
 public ListNode reverseList(ListNode head) {
