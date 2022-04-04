@@ -86,20 +86,32 @@ public ListNode deleteDuplicates(ListNode head) {
 //如果不保存 前向,后向指针,那在头插法使用过程中,未免破坏原链条,需要new ListNode复制节点,内存开销大.不破坏原链条,是本题的难点
 
 ```java
-public ListNode reverseList(ListNode head) {
-    ListNode pre = null, p = head;
-    while (p != null) {
-        // 保存当前head.Next节点，防止重新赋值后被覆盖
-        // 一轮之后状态：nil<-1 2->3->4
-        //               prev p
-        ListNode temp = p.next;
-        p.next = pre;
-        // pre 移动
-        pre = p;
-        // p 移动
-        p = temp;
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode res=new ListNode(-1);
+        ListNode p=head;
+        ListNode beh;
+        while(p!=null){
+            //保存p的后继节点
+            beh=p.next;
+            //把p头插入res
+            p.next=res.next;
+            res.next=p;
+            //p置位
+            p=beh;
+        }
+        return res.next;
     }
-    return pre;
 }
 ```
 
