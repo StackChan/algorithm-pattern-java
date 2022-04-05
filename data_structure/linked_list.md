@@ -222,7 +222,7 @@ public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 public ListNode middleNode(ListNode head) {
     ListNode p = head;
     ListNode q = head;
-    while (q != null && q.next != null) {
+    while (q != null && q.next != null) {//如果求第一个中点,加上q.next.next!=null
         p = p.next;
         q = q.next.next;
     }
