@@ -262,6 +262,60 @@ public void reorderList(ListNode head) {
 }
 ```
 
+我的解答(完整版!time:击败99.99% 空间:击败25.82%):
+```
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public void reorderList(ListNode head) {
+        ListNode fast=head;
+        ListNode mid=head;
+        while(fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            mid=mid.next;
+        }
+        ListNode head1=this.reverseList(mid.next);
+        //很关键,没有这句话,就报:Found cycle in the ListNode
+        mid.next=null;
+        ListNode temp;
+        ListNode temp1;
+        ListNode p=head;
+        while(head1!=null){
+            temp=p.next;
+            temp1=head1.next;
+
+            head1.next=p.next;
+            p.next=head1;
+
+            p=temp;
+            head1=temp1;
+        }
+    }
+    public ListNode reverseList(ListNode head){
+        ListNode res=new ListNode(-1);
+        ListNode p=head;
+        ListNode beh;
+        while(p!=null){
+            beh=p.next;
+            p.next=res.next;
+            res.next=p;
+            
+            p=beh;
+        }
+        return res.next;
+    }
+}
+
+```
+
 
 #### 回文链表
 
