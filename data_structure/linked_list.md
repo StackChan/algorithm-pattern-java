@@ -221,8 +221,9 @@ public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 ```java
 public ListNode middleNode(ListNode head) {
     ListNode p = head;
+    // fast如果初始化为head.Next则能求出第一个中间节点!
     ListNode q = head;
-    while (q != null && q.next != null) {//如果求第一个中点,加上q.next.next!=null
+    while (q != null && q.next != null) {
         p = p.next;
         q = q.next.next;
     }
