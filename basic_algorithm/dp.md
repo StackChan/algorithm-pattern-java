@@ -350,7 +350,7 @@ public int lengthOfLIS(int[] nums) {
 }
 ```
 
-#### 单词拆分
+#### 单词拆分(目前还不太熟悉,重点重复刷)
 
 > [139. 单词拆分](https://leetcode-cn.com/problems/word-break/)
 >
